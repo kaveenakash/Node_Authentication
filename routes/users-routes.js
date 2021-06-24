@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
 const userController = require('../controllers/user-controller')
-
+const checkAuth = require('../middleware/check-auth')
 //  router.get('/',(req,res,next) =>{
 //      console.log('Get request in place')
 //      res.json({message:"It Works"})
@@ -24,5 +24,13 @@ const userController = require('../controllers/user-controller')
 
 router.post('/signUp',userController.SignUp)
 router.post('/login',userController.Login)
+
+//This route below routes check is available token
+router.use(checkAuth)
+router.get('/protected',(req,res) =>{
+    return res.status(200).json({
+        message:"Hello"
+    })
+})
 
 module.exports = router;
