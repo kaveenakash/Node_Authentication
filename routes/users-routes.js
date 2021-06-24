@@ -22,7 +22,7 @@ const userController = require('../controllers/user-controller')
 //  router.post('/',check('title').not().isEmpty(),check('description).isLength({min:5}),controller)
 
 
-router.post('/signUp',userController.signup)
-
+router.post('/signUp',userController.SignUp)
+router.post('/login',userController.Login)
 
 module.exports = router;

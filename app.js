@@ -2,13 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express();
-app.use(bodyParser.urlencoded({extended:false}))
+
 
 const userRoutes = require('./routes/users-routes');
 const HttpError = require('./models/http-error');
 
 
-
+app.use(express.json())
 app.use('/api/user',userRoutes)
 
 
